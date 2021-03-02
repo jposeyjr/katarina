@@ -1,38 +1,198 @@
-.App {
+html,
+body {
+  color: #000;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f0f2f5;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* F0F2FT - Off-White Main Background */
+/* 1985A1 - Blue - Main color */
+/* FF883E - Orange - Success / Call to actions outside of login*/
+/* #399E5A - Green - Login/Sign up button  */
+/* C20114 - Red alerts */
+/* A06CD5 - Purple links after */
+/* #000 - Black - Text */
+/* #FFF - White - Cards */
+
+.root {
+  min-width: 500px;
+  margin: 2em;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+/* FORM CSS */
+
+.formHolder {
+  width: 500px;
+  background-color: #fff;
+  border: none;
+  border: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  box-sizing: border-box;
+  padding: 20px 0 20px;
+  margin: 40px 0 0;
+}
+
+.formArea {
+  padding: 6px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inputHolder {
+  direction: ltr;
+  line-height: 1.34;
+  text-align: center;
+  display: inline-block;
+  margin: auto;
+  padding: 6px 0;
+  font-size: 17px;
+  font-family: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.inputLogin {
+  direction: ltr;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #dddfe2;
+  color: #000;
+  height: 22px;
+  line-height: 16px;
+  vertical-align: middle;
+  font-size: 17px;
+  padding: 14px 16px;
+  width: 400px;
+  border-radius: 6px;
+  font-family: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.form-submit {
+  direction: ltr;
+  margin: 0;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #399e5a;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 48px;
+  padding: 0 16px;
+  width: 250px;
+  font-family: inherit;
 }
 
-.App-link {
-  color: #61dafb;
+.errorArea {
+  color: #c20114;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.successArea {
+  color: #ff883e;
+}
+
+.memberArea a:visited {
+  color: #a06cd5;
+}
+
+.memberArea a:link {
+  color: #a06cd5;
+}
+
+/* NAV CSS */
+
+.navBar {
+  width: 100%;
+  align-items: center;
+  background-color: #1985a1;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  height: 69px;
+}
+.navBar ul {
+  list-style-type: none;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.navBar li {
+  display: inline-block;
+  line-height: 69px;
+  height: 69px;
+  padding: 0 25px;
+}
+
+.navBar li a {
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  margin: 0px 10px;
+  padding: 10px 10px;
+  z-index: 0;
+}
+
+.navBar a:before,
+.navBar a:after {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: #fff;
+  content: '';
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.navBar a:before {
+  left: 0px;
+  top: 0px;
+}
+
+.navBar a:after {
+  right: 0px;
+  bottom: 0px;
+}
+
+.navBar li a:hover:before,
+.navBar li a:hover:after {
+  opacity: 1;
+  height: 2px;
+  width: 100%;
+}
+
+a:link {
+  color: #fff;
+}
+
+a:visited {
+  color: #fff;
+}
+
+/* SIGN UP PAGE CSS */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  gap: 0px 1em;
+  grid-template-areas: 'rootHome userForm';
+}
+.rootHome {
+  grid-area: rootHome;
+  font-size: 1.2rem;
+}
+.userForm {
+  grid-area: userForm;
 }
