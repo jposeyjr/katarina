@@ -1,0 +1,30 @@
+.gameHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  width: 25%;
+  background-color: #fff;
+  border: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  box-sizing: border-box;
+  margin: 20px;
+  text-align: center;
+}
+
+.gameRoot {
+  min-width: 500px;
+  margin: 2em;
+  margin-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gameLink:link {
+  color: #2124d1;
+}
+
+.gameLink:visited {
+  color: #a06cd5;
+}

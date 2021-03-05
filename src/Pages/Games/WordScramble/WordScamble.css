@@ -1,0 +1,122 @@
+/* GUESS GAME CSS */
+.inputGuess {
+  direction: ltr;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #dddfe2;
+  color: #000;
+  height: 10px;
+  line-height: 16px;
+  vertical-align: middle;
+  font-size: 17px;
+  padding: 14px 16px;
+  width: 300px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.btnGuess {
+  direction: ltr;
+  margin: 0;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #ff883e;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0 16px;
+  font-family: inherit;
+  max-height: 40px;
+}
+
+.btnGuess:disabled {
+  display: none;
+}
+
+.letterHolder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 6px 0;
+}
+.boxLetter {
+  width: 40px;
+  height: 50px;
+  text-align: center;
+  background-image: url('wood.jpeg');
+  background-position: center;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 45px;
+  margin: 5px;
+}
+
+.bottomArea {
+  display: inline;
+  margin-left: 20px;
+}
+
+.rootHolder {
+  width: 600px;
+  align-self: center;
+  background-color: #fff;
+  border: none;
+  border: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  box-sizing: border-box;
+  padding: 20px 0 20px;
+  margin: 40px 0 0;
+}
+
+.timeHolder {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hintHolder {
+  display: inline-flex;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btnHint {
+  direction: ltr;
+  margin: 0;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #ff883e;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 32px;
+  padding: 0 16px;
+  font-family: inherit;
+  max-height: 32px;
+}
+
+.btnGuess:disabled {
+  display: none;
+}
