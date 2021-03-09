@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UseTime } from '../../../UseTime';
-import Timer from '../Timer';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Timer from '../Utilz/Timer';
 import Letter from './Letter';
 import './WordScamble.css';
 
@@ -56,13 +56,20 @@ const WordScramble = () => {
   const [end, setEnd] = useState(false);
   const [newHint, setNewHint] = useState(0);
   const [hint, setHint] = useState('');
-  const { time } = useContext(UseTime);
+  const dispatch = useDispatch();
+  const timer = useSelector((store) => store.time);
+  const [time, setTime] = useState(null);
 
   useEffect(() => {
-    if (time === 120 && !end) {
+    if (time === null) {
+      dispatch({ type: 'SET_TIMER', payload: 120 });
+      setTime(timer);
+    }
+    time > 0 && setTimeout(() => setTime(time - 1), 1000);
+    if (time === 0 && !end) {
       setEnd(true);
       alert('Game over thanks for playing!');
-    } else if (time === 0) {
+    } else if (time === 120) {
       getWord();
     }
     giveHint();
@@ -123,7 +130,7 @@ const WordScramble = () => {
       <div className='rootHolder'>
         <h1>Word Scramble</h1>
         <div className='timeHolder'>
-          <Timer />
+          <Timer time={time} />
           <h3>Score: {score}</h3>
         </div>
         {hint ? (
