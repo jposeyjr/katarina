@@ -6,7 +6,12 @@ const Timer = (time) => {
       time % 60
     ).padStart(2, '0')}`;
 
-  return <h3>Time left: {formatTime(time.time)}</h3>;
+  return (
+    <h3>
+      Time left:
+      {typeof (time.time === 'number') ? formatTime(time.time) : '0:00'}
+    </h3>
+  );
 };
 
 export default Timer;

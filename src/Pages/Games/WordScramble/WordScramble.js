@@ -73,7 +73,7 @@ const WordScramble = () => {
       getWord();
     }
     giveHint();
-  }, [score, end, time]);
+  }, [score, end, time]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getWord = () => {
     const randNum = Math.floor(Math.random() * words.length);
@@ -117,12 +117,18 @@ const WordScramble = () => {
 
   const giveHint = () => {
     //
-    if (time % 20 === 0 && !end) {
+    if (time % 20 === 0 && !end && time !== 120) {
       setHint(key.substring(0, newHint));
       setNewHint(newHint + 1);
     } else if (newHint === 0) {
       setHint('');
     }
+  };
+
+  const newWord = () => {
+    getWord();
+    setNewHint(0);
+    setHint('');
   };
 
   return (
@@ -136,7 +142,9 @@ const WordScramble = () => {
         {hint ? (
           <div className='hintHolder'>
             <h3>Hint: {hint}</h3>
-            <button className='btnHint'>New Word</button>
+            <button className='btnHint' onClick={() => newWord()}>
+              New Word
+            </button>
           </div>
         ) : null}
         <div className='letterHolder'>

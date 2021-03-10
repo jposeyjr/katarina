@@ -1,18 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './GameLanding.css';
 
 const GameLanding = () => {
+  const user = useSelector((store) => store.user);
   return (
     <div className='gameRoot'>
       <div className='gameHolder'>
-        <Link className='gameLink' to='/wordscramble'>
+        <Link className='gameLink' to='/priceisright'>
           <h3>The Price Is Right</h3>
         </Link>
         <p>
           Show different items and each person guesses price for items the total
           will be added and closest person or group wins.
         </p>
+        {user.role === 1 ? (
+          <div className='hostBtns'>
+            <button>Player</button>
+            <button>Create</button>{' '}
+          </div>
+        ) : null}
       </div>
       <div className='gameHolder'>
         <h3>Don't Say Baby</h3>

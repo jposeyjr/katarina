@@ -2,7 +2,7 @@ import React from 'react';
 
 const PriceRight = () => {
   return (
-    <div className='priceRoot'>
+    <div className='root'>
       <div>
         <h1>The Price Is Right</h1>
       </div>
