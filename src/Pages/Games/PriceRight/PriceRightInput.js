@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ImageUpload from '../../../Panels/ImageUpload/ImageUpload';
+import {
+  AboutText,
+  Button,
+  Column,
+  Container,
+  Grid,
+  InputHolder,
+  PriceRightInput,
+  PriceRightRoot,
+  Row,
+} from './PriceRight.styles';
 
-const PriceRightInput = () => {
+const PriceRightPriceRightInput = () => {
   const dispatch = useDispatch();
   const [newItem, setItem] = useState({
     itemImage: [],
@@ -18,34 +29,40 @@ const PriceRightInput = () => {
     e.preventDefault();
   };
   return (
-    <div>
+    <PriceRightRoot>
       <h1>Setting up the Price Right Game</h1>
-      <p>
+      <AboutText>
         Please add images, item name and prices below to have a fully custom
         Price Right game. Or you can choose to use our pre-loaded list based off
         of most common baby registry items. Simply hit the check box to add it
         to the game!
-      </p>
+      </AboutText>
       <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Item name'
-          aria-placeholder='item name'
-        ></input>
-        <input
-          type='text'
-          placeholder='Item price'
-          aria-placeholder='item price'
-        ></input>
-        <ImageUpload
-          accept='.jpg, .png, .jpeg'
-          label='Price Right Image'
-          updateFilesCb={updateUploadedFile}
-        />
-        <button type='submit'>Add Item</button>
+        <Row>
+          <Column size={'33%'}>
+            <PriceRightInput
+              type='text'
+              placeholder='Item name'
+              aria-placeholder='item name'
+            />
+            <PriceRightInput
+              type='text'
+              placeholder='Item price'
+              aria-placeholder='item price'
+            />
+            <Button>Submit</Button>
+          </Column>
+          <Column size={'65%'}>
+            <ImageUpload
+              accept='.jpg,.png,.jpeg'
+              label='Price Right Image'
+              updateFilesCb={updateUploadedFile}
+            />
+          </Column>
+        </Row>
       </form>
-    </div>
+    </PriceRightRoot>
   );
 };
 
-export default PriceRightInput;
+export default PriceRightPriceRightInput;

@@ -13,7 +13,7 @@ import {
   InputLabel,
 } from './ImageUpload.styles';
 
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 50000;
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 5000000;
 const KILO_BYTES_PER_BYTE = 1000;
 
 const convertNestedObjectToArray = (nestedObj) =>
@@ -24,7 +24,7 @@ const convertBytesToKB = (bytes) => Math.round(bytes / KILO_BYTES_PER_BYTE);
 const ImageUpload = ({
   label,
   updateFilesCb,
-  maxFileSizeInByes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
+  maxFileSizeInBytes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
   ...otherProps
 }) => {
   const fileInputField = useRef(null);
@@ -70,22 +70,22 @@ const ImageUpload = ({
     <>
       <FileUploadContainer>
         <InputLabel>{label}</InputLabel>
-        <DragDropText>Drag and drop your files anywhere or</DragDropText>
+        <DragDropText>Drag & drop your images here or</DragDropText>
         <UploadFileBtn type='button' onClick={handleUploadBtnClick}>
           <i className='fas fa-file-upload' />
           <span> Upload {otherProps.multiple ? 'files' : 'a file'}</span>
         </UploadFileBtn>
         <FormField
           type='file'
-          onChange={handleNewFileUpload}
           ref={fileInputField}
+          onChange={handleNewFileUpload}
           title=''
           value=''
           {...otherProps}
         />
       </FileUploadContainer>
       <FilePreviewContainer>
-        <span>To Upload</span>
+        <span>Preview Image</span>
         <PreviewList>
           {Object.keys(files).map((fileName, index) => {
             let file = files[fileName];
@@ -94,13 +94,13 @@ const ImageUpload = ({
               <PreviewContainer key={fileName}>
                 <div>
                   {isImageFile && (
-                    <img
+                    <ImagePreview
                       src={URL.createObjectURL(file)}
                       alt={`file preview ${index}`}
                     />
                   )}
                   <FileMetaData isImageFile={isImageFile}>
-                    <span>{file.name}</span>
+                    <span>{file.name}stff</span>
                     <aside>
                       <span>{convertBytesToKB(file.size)} kb</span>
                       <RemoveFileIcon

@@ -64,7 +64,7 @@ export const UploadFileBtn = styled.button`
   z-index: 1;
   transition: color 250ms ease-in-out;
   font-family: 'Open Sans', sans-serif;
-  width: 45%;
+  width: 30%;
   display: flex;
   align-items: center;
   padding-right: 0;
@@ -178,8 +178,8 @@ export const RemoveFileIcon = styled.i`
 
 export const PreviewContainer = styled.section`
   padding: 0.25rem;
-  width: 20%;
-  height: 120px;
+  width: 30%;
+  height: 150px;
   border-radius: 6px;
   box-sizing: border-box;
 

@@ -15,12 +15,9 @@ const GameLanding = () => {
           Show different items and each person guesses price for items the total
           will be added and closest person or group wins.
         </p>
-        {user.role === 1 ? (
-          <div className='hostBtns'>
-            <button>Player</button>
-            <button>Create</button>{' '}
-          </div>
-        ) : null}
+        <Link className='gameLink' to='/pricerightinput'>
+          <h3>Create List</h3>
+        </Link>
       </div>
       <div className='gameHolder'>
         <h3>Don't Say Baby</h3>
