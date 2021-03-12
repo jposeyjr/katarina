@@ -41,16 +41,16 @@ export const InputHolder = styled.div`
   font-family: inherit;
 `;
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
+export const Form = styled.form`
+  max-width: 1500px;
+  align-self: center;
 `;
 
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
+  max-width: 1250px;
 `;
 
 export const Column = styled.div`

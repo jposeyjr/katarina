@@ -6,6 +6,7 @@ import {
   Button,
   Column,
   Container,
+  Form,
   Grid,
   InputHolder,
   PriceRightInput,
@@ -37,7 +38,7 @@ const PriceRightPriceRightInput = () => {
         of most common baby registry items. Simply hit the check box to add it
         to the game!
       </AboutText>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Column size={'33%'}>
             <PriceRightInput
@@ -60,7 +61,7 @@ const PriceRightPriceRightInput = () => {
             />
           </Column>
         </Row>
-      </form>
+      </Form>
     </PriceRightRoot>
   );
 };
