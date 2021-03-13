@@ -21,7 +21,7 @@ function* addPriceImage(action) {
 function* getPriceList() {
   try {
     const results = yield axios.get('/api/pricelist');
-    yield put({ type: 'SET_PRICELIST', payload: results.data });
+    yield put({ type: 'SET_PRICE_LIST', payload: results.data });
   } catch (error) {
     console.log('Error with getting baby list data:', error);
   }
@@ -36,7 +36,7 @@ function* clearPriceImage() {
 }
 
 function* PriceListSaga() {
-  yield takeLatest('GET_PRICELIST', getPriceList);
+  yield takeLatest('GET_PRICE_LIST', getPriceList);
   yield takeLatest('ADD_ITEM', addPriceItem);
   yield takeLatest('ADD_ITEM_IMAGE', addPriceImage);
   yield takeLatest('DELETE_IMAGE', clearPriceImage);

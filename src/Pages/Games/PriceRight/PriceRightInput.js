@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ImageUpload from '../../../Panels/ImageUpload/ImageUpload';
 import {
   AboutText,
@@ -13,6 +13,8 @@ import {
 
 const PriceRightPriceRightInput = () => {
   const dispatch = useDispatch();
+  const priceImage = useSelector((redux) => redux.priceImage);
+
   const [newItem, setItem] = useState({
     itemImage: [],
     itemPrice: '',
@@ -25,6 +27,15 @@ const PriceRightPriceRightInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { itemName, itemPrice } = newItem;
+    if (priceImage.base64 && itemName && itemPrice) {
+      dispatch({
+        type: 'ADD_ITEM',
+        payload: priceImage.base64,
+        itemName,
+        itemPrice,
+      });
+    }
   };
   return (
     <PriceRightRoot>
@@ -42,11 +53,21 @@ const PriceRightPriceRightInput = () => {
               type='text'
               placeholder='Item name'
               aria-placeholder='item name'
+              value={newItem.itemName || ''}
+              required
+              onChange={(e) =>
+                setItem({ ...newItem, itemName: e.target.value })
+              }
             />
             <PriceRightInput
               type='text'
               placeholder='Item price'
               aria-placeholder='item price'
+              value={newItem.itemPrice || ''}
+              required
+              onChange={(e) =>
+                setItem({ ...newItem, itemPrice: e.target.value })
+              }
             />
             <Button>Submit</Button>
           </Column>
