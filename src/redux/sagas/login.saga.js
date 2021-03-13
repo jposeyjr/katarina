@@ -28,10 +28,10 @@ function* loginUser(action) {
 
 /**
  * Will be fired on "LOGOUT" action
- * @param {Object} action user object to let the client know the user is logged out
+ *
  * */
 
-function* logoutUser(action) {
+function* logoutUser() {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },

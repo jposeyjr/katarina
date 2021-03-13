@@ -1,5 +1,6 @@
-const cookieSession = require('cookie-session');
-
+import cookieSession from 'cookie-session';
+import dotenv from 'dotenv';
+dotenv.config();
 /*
   The cookie session makes it so a user can enters their username and password one time,
   and then we can keep them logged in. We do this by giving them a really long random string
@@ -21,7 +22,7 @@ const serverSessionSecret = () => {
   return process.env.SERVER_SESSION_SECRET;
 };
 
-module.exports = cookieSession({
+export default cookieSession({
   secret: serverSessionSecret() || 'secret93432fksdmnfoksd290fdsifj0sdf', // please set this in your .env file
   key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
   resave: 'false',

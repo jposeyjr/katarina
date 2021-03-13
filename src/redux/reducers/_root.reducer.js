@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-// import games from './games.reducer';
 import time from './time.reducer';
-import emailReducer from './email.reducer';
 import socketGuest from './socket.reducer';
+import price from './price.reducer';
+import priceImage from './priceImage.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,10 +13,10 @@ import socketGuest from './socket.reducer';
 const rootReducer = combineReducers({
   errors,
   user,
-  // games,
   time,
   socketGuest,
-  emailReducer,
+  price,
+  priceImage,
 });
 
 export default rootReducer;

@@ -1,6 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   color: #000;
+  width: 100%;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
   background-color: #f0f2f5;
@@ -37,20 +43,21 @@ body {
   margin: 40px 0 0;
 }
 
+.alert {
+  box-sizing: border-box;
+  padding: 15px 10px;
+  border: 2px solid #e01616;
+  background-color: #efefef;
+  border-radius: 3px;
+  color: #e01616;
+  font-size: 0.8rem;
+  width: 80%;
+  display: inline-block;
+}
+
 .formArea {
   padding: 6px 0;
   text-align: center;
-}
-
-.inputHolder {
-  direction: ltr;
-  line-height: 1.34;
-  text-align: center;
-  display: inline-block;
-  margin: auto;
-  padding: 6px 0;
-  font-size: 17px;
-  font-family: inherit;
 }
 
 .inputLogin {

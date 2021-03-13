@@ -9,7 +9,6 @@ import axios from 'axios';
 function* registerUser(action) {
   try {
     yield put({ type: 'CLEAR_REGISTRATION_ERROR' });
-
     // passes the username and password from the payload to the server
     yield axios.post('/api/user/register', action.payload);
 

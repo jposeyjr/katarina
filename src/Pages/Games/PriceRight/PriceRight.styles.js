@@ -20,7 +20,7 @@ export const PriceRightInput = styled.input`
   background: #fff;
   border: 1px solid #dddfe2;
   color: #000;
-  height: 14px;
+  height: 40px;
   line-height: 14px;
   vertical-align: middle;
   font-size: 17px;
@@ -93,6 +93,6 @@ export const Button = styled.button`
   font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-  width: 250px;
+  width: 150px;
   font-family: inherit;
 `;

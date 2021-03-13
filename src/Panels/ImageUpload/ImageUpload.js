@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   FileUploadContainer,
   FormField,
@@ -29,6 +30,7 @@ const ImageUpload = ({
 }) => {
   const fileInputField = useRef(null);
   const [files, setFiles] = useState({});
+  const dispatch = useDispatch();
 
   const handleUploadBtnClick = () => {
     fileInputField.current.click();
@@ -48,6 +50,9 @@ const ImageUpload = ({
 
   const callUpdateFilesCb = (files) => {
     const filesAsArray = convertNestedObjectToArray(files);
+    if (filesAsArray) {
+      convertBase64(filesAsArray[0]);
+    }
     updateFilesCb(filesAsArray);
   };
 
@@ -60,8 +65,37 @@ const ImageUpload = ({
     }
   };
 
+  const convertBase64 = (file) => {
+    try {
+      //reader needed to convert files to base64
+      let reader = new FileReader();
+      //converts the file to base64
+      reader.readAsDataURL(file);
+      //once file is loaded do the things
+      reader.onload = () => {
+        let fileInfo = {
+          name: file.name,
+          type: file.type,
+          size: convertBytesToKB(file.size) + 'kb',
+          base64: reader.result,
+          file: file,
+        };
+        reader.onerror = (err) => {
+          alert(
+            'Something went wrong trying to upload your image please try again!'
+          );
+          console.error(err);
+        };
+        dispatch({ type: 'SET_PRICE_IMAGE', payload: fileInfo });
+      };
+    } catch (err) {
+      console.error('Something went wrong!');
+    }
+  };
+
   const removeFile = (fileName) => {
     delete files[fileName];
+    dispatch({ type: 'DELETE_IMAGE' });
     setFiles({ ...files });
     callUpdateFilesCb({ ...files });
   };
@@ -100,7 +134,7 @@ const ImageUpload = ({
                     />
                   )}
                   <FileMetaData isImageFile={isImageFile}>
-                    <span>{file.name}stff</span>
+                    <span>{file.name}</span>
                     <aside>
                       <span>{convertBytesToKB(file.size)} kb</span>
                       <RemoveFileIcon

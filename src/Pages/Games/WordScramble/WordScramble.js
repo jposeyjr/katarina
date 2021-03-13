@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Timer from '../Utilz/Timer';
 import Letter from './Letter';
+import { InputGuess, InputHolder } from './style';
 import './WordScamble.css';
 
 const WordScramble = () => {
@@ -153,16 +154,15 @@ const WordScramble = () => {
           ))}
         </div>
         <form onSubmit={handleSubmit} id='myForm' className='formArea'>
-          <div className='inputHolder'>
-            <input
+          <InputHolder>
+            <InputGuess
               type='text'
               name='guess'
               autoFocus
-              className='inputGuess'
               placeholder='Input Guess'
               aria-label='guess'
-            ></input>
-          </div>
+            />
+          </InputHolder>
           <div className='bottomArea'>
             <button className='btnGuess' type='submit' disabled={end}>
               Submit

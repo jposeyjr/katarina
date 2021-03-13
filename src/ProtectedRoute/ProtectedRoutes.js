@@ -10,11 +10,11 @@ const PrivateRoute = ({
     <Route
       {...rest}
       render={(props) => {
-        if (user && !authRedirect) {
+        if (user && !authRedirect && !hostRedirect) {
           return <Component {...rest} {...props} />;
-        } else if (user && hostRedirect && user.role_id === 1) {
+        } else if (user && hostRedirect && user.role === 'host') {
           return <Redirect exact from={rest.path} to={hostRedirect} />;
-        } else if (user && authRedirect && user.role_id === 0) {
+        } else if (user && authRedirect && user.role === 'guest') {
           return <Redirect exact from={rest.path} to={authRedirect} />;
         } else if (!user && !authRedirect) {
           return (

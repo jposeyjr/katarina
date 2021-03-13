@@ -1,18 +1,29 @@
-const express = require('express');
-require('dotenv').config();
-const app = express();
-const bodyParser = require('body-parser');
-const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
+import express from 'express';
+import passport from './strategies/user.strategy.js';
+import sessionMiddleware from './modules/session-middleware.js';
+import userRouter from './routes/user.router.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// Route includes
-const userRouter = require('./routes/user.router');
-const gamesRouter = require('./routes/games.router');
-const inviteRouter = require('./routes/invites.router');
+mongoose.connect(
+  `${process.env.MONGO_URI}`,
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('Connected To Mongo');
+  }
+);
+
+const app = express();
 
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Passport Session Configuration
 app.use(sessionMiddleware);
@@ -23,9 +34,6 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/games', gamesRouter);
-app.use('/api/invites', inviteRouter);
-// app.use('/api/babylist', babyRouter);
 
 // Serve static files
 app.use(express.static('build'));
@@ -34,9 +42,11 @@ app.use(express.static('build'));
 const PORT = process.env.PORT || 5000;
 
 //setting up Web sockets and allow traffic to come through
-const http = require('http').createServer(app);
+import { createServer } from 'http';
+const http = createServer(app);
 //allow us to send data without cors issue
-const io = require('socket.io')(http);
+import { Server } from 'socket.io';
+const io = new Server(http);
 
 let socket_id = [];
 io.on('connection', (socket) => {
