@@ -96,3 +96,62 @@ export const Button = styled.button`
   width: 150px;
   font-family: inherit;
 `;
+
+export const ItemList = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: 500px) {
+    flex-direct: column;
+  }
+`;
+
+export const ItemCard = styled.div`
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+  background-size: cover;
+  background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  transition: 0.4s;
+
+  &:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+      -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+  }
+`;
+
+export const ItemTitle = styled.div`
+  text-align: center;
+  border-radius: 0px 0px 30px 30px;
+  font-size: 25px;
+  margin-top: -66px;
+  height: 30px;
+  color: white;
+  text-shadow: black 0px 0px 40px;
+`;
+
+export const ImageHolder = styled.div`
+  width: inherit;
+  height: inherit;
+  border-radius: 30px;
+
+  img {
+    width: 100%;
+    height: 85%;
+    border-radius: 30px 30px 0 0;
+  }
+`;
+
+export const ItemInfo = styled.p`
+  display: inline-flex;
+  margin-right: 20px;
+`;

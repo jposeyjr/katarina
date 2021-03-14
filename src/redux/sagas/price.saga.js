@@ -3,8 +3,7 @@ import axios from 'axios';
 
 function* addPriceItem(action) {
   try {
-    const results = yield axios.post('/api/pricelist', action.payload);
-    console.log(results);
+    yield axios.post('/api/pricelist', action.payload);
     yield getPriceList();
   } catch (error) {
     console.log('Error with adding baby list data: ', error);

@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 
 export const getPriceRightList = async (req, res) => {
   try {
-    const data = await PriceRightDB.find({ host_id: req.body.id });
-    res.status(200).json(data);
+    const data = await PriceRightDB.find({ host_id: req.user._id });
+    res.status(200).json(data[0]);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
