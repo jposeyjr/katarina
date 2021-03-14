@@ -14,6 +14,7 @@ import {
 const PriceRightPriceRightInput = () => {
   const dispatch = useDispatch();
   const priceImage = useSelector((redux) => redux.priceImage);
+  const user = useSelector((redux) => redux.user);
 
   const [newItem, setItem] = useState({
     itemImage: [],
@@ -28,12 +29,17 @@ const PriceRightPriceRightInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { itemName, itemPrice } = newItem;
+    const id = user._id;
     if (priceImage.base64 && itemName && itemPrice) {
+      const itemToSend = {
+        itemImage: priceImage.base64,
+        itemName: itemName,
+        itemPrice: itemPrice,
+        user_id: id,
+      };
       dispatch({
         type: 'ADD_ITEM',
-        payload: priceImage.base64,
-        itemName,
-        itemPrice,
+        payload: itemToSend,
       });
     }
   };

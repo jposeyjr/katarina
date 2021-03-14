@@ -2,6 +2,7 @@ import express from 'express';
 import passport from './strategies/user.strategy.js';
 import sessionMiddleware from './modules/session-middleware.js';
 import userRouter from './routes/user.router.js';
+import priceRouter from './routes/priceright.router.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,6 +13,7 @@ mongoose.connect(
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   },
   (err) => {
     if (err) throw err;
@@ -22,8 +24,8 @@ mongoose.connect(
 const app = express();
 
 // Body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Passport Session Configuration
 app.use(sessionMiddleware);
@@ -34,6 +36,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/pricelist', priceRouter);
 
 // Serve static files
 app.use(express.static('build'));
