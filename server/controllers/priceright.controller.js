@@ -28,38 +28,27 @@ export const createList = async (req, res) => {
 };
 
 export const updateList = async (req, res) => {
-  const { id } = req.params;
+  const host_id = req.user._id;
   const { itemName, itemPrice, itemImage } = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No list with id: ${id}`);
 
   const updatedList = {
     name: itemName,
     price: itemPrice,
     image: itemImage,
   };
+  const list = await PriceRightDB.find({ host_id });
 
-  //possible alternative
-  //   const list = await PriceRightDB.findOne({host_id: id});
-  //   list.items.push({
-  //       name: itemName,
-  //       price: itemPrice,
-  //       image: itemImage
-  //   })
-
-  //const updatedList = await list.save();
-
-  await PriceRightDB.findByIdAndUpdate(
-    id,
+  await PriceRightDB.updateOne(
+    list._id,
     { $addToSet: { items: updatedList } },
     function (err, result) {
       if (err) {
+        console.log('Error updating list: ', err.message);
         res.status(400).send('Error updating list: ', err);
       }
+      res.status(200).json(result);
     }
   );
-  res.json(updatedList);
 };
 
 export const deleteList = async (req, res) => {

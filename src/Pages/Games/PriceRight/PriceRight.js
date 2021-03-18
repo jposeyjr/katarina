@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ImageHolder,
@@ -14,7 +14,7 @@ const PriceRight = () => {
 
   useEffect(() => {
     dispatch({ type: 'GET_PRICE_LIST' });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='root'>

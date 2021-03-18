@@ -18,6 +18,16 @@ function* addPriceImage(action) {
   }
 }
 
+function* updatePriceList(action) {
+  try {
+    const results = yield axios.put('/api/pricelist', action.payload);
+    console.log(results);
+    // yield put({ type: 'SET_PRICE_LIST', payload: results.data });
+  } catch (error) {
+    console.log('Error adding new item to list: ', error);
+  }
+}
+
 function* getPriceList() {
   try {
     const results = yield axios.get('/api/pricelist');
@@ -38,6 +48,7 @@ function* clearPriceImage() {
 function* PriceListSaga() {
   yield takeLatest('GET_PRICE_LIST', getPriceList);
   yield takeLatest('ADD_ITEM', addPriceItem);
+  yield takeLatest('UPDATE_LIST', updatePriceList);
   yield takeLatest('ADD_ITEM_IMAGE', addPriceImage);
   yield takeLatest('DELETE_IMAGE', clearPriceImage);
 }

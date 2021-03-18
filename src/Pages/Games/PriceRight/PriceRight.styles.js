@@ -110,8 +110,8 @@ export const ItemList = styled.div`
 
 export const ItemCard = styled.div`
   margin: 30px auto;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border-radius: 40px;
   background-size: cover;
   background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
@@ -133,7 +133,7 @@ export const ItemTitle = styled.div`
   text-align: center;
   border-radius: 0px 0px 30px 30px;
   font-size: 25px;
-  margin-top: -66px;
+  margin-top: -60px;
   height: 30px;
   color: white;
   text-shadow: black 0px 0px 40px;

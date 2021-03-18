@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ImageUpload from '../../../Panels/ImageUpload/ImageUpload';
+import PriceRight from './PriceRight';
 import {
   AboutText,
   Button,
@@ -14,6 +15,7 @@ import {
 const PriceRightPriceRightInput = () => {
   const dispatch = useDispatch();
   const priceImage = useSelector((redux) => redux.priceImage);
+  const priceList = useSelector((redux) => redux.price.items);
   const user = useSelector((redux) => redux.user);
 
   const [newItem, setItem] = useState({
@@ -37,10 +39,14 @@ const PriceRightPriceRightInput = () => {
         itemPrice: itemPrice,
         user_id: id,
       };
-      dispatch({
-        type: 'ADD_ITEM',
-        payload: itemToSend,
-      });
+      if (priceList.length) {
+        dispatch({ type: 'UPDATE_LIST', payload: itemToSend });
+      } else {
+        dispatch({
+          type: 'ADD_ITEM',
+          payload: itemToSend,
+        });
+      }
     }
   };
   return (
@@ -86,6 +92,8 @@ const PriceRightPriceRightInput = () => {
           </Column>
         </Row>
       </Form>
+      <h3>Current List</h3>
+      <PriceRight />
     </PriceRightRoot>
   );
 };

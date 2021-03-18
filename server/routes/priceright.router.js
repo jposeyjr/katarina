@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/', rejectUnauthenticated, getPriceRightList);
 router.post('/', rejectUnauthenticated, createList);
-router.patch('/:id', rejectUnauthenticated, updateList);
+router.put('/', rejectUnauthenticated, updateList);
 router.delete('/:id', rejectUnauthenticated, deleteList);
 
 export default router;
