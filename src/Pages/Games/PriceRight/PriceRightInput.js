@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ImageUpload from '../../../Panels/ImageUpload/ImageUpload';
 import PriceRight from './PriceRight';
@@ -17,6 +17,10 @@ const PriceRightPriceRightInput = () => {
   const priceImage = useSelector((redux) => redux.priceImage);
   const priceList = useSelector((redux) => redux.price.items);
   const user = useSelector((redux) => redux.user);
+
+  useEffect(() => {
+    dispatch({ type: 'GET_PRICE_LIST' });
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [newItem, setItem] = useState({
     itemImage: [],
@@ -41,11 +45,13 @@ const PriceRightPriceRightInput = () => {
       };
       if (priceList.length) {
         dispatch({ type: 'UPDATE_LIST', payload: itemToSend });
+        // setItemList(...itemList, itemToSend);
       } else {
         dispatch({
           type: 'ADD_ITEM',
           payload: itemToSend,
         });
+        // setItemList(...itemList, itemToSend);
       }
     }
   };

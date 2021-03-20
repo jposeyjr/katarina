@@ -25,7 +25,8 @@ const GameLanding = () => {
         <h3>Don't Say Baby</h3>
         <p>
           Each guest will have baby attached to them if they say baby the host
-          or someone else will take it.
+          or someone else will take it. First person to call them out gets the
+          point.
         </p>
       </div>
       <div className='gameHolder'>

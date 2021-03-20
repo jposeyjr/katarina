@@ -12,7 +12,7 @@ const Nav = () => {
         <li>
           <Link to='/games'>Games</Link>
         </li>
-        {user && <li>Logged In</li>}
+        {user.length && <li>Logged In</li>}
       </ul>
     </nav>
   );

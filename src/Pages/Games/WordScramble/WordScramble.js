@@ -64,7 +64,7 @@ const WordScramble = () => {
   useEffect(() => {
     if (time === null) {
       dispatch({ type: 'SET_TIMER', payload: 120 });
-      setTime(timer);
+      setTime(timer.time);
     }
     time > 0 && setTimeout(() => setTime(time - 1), 1000);
     if (time === 0 && !end) {
@@ -74,7 +74,7 @@ const WordScramble = () => {
       getWord();
     }
     giveHint();
-  }, [score, end, time]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [score, end, time, timer]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getWord = () => {
     const randNum = Math.floor(Math.random() * words.length);
@@ -140,14 +140,14 @@ const WordScramble = () => {
           <Timer time={time} />
           <h3>Score: {score}</h3>
         </div>
-        {hint ? (
+        {hint && (
           <div className='hintHolder'>
             <h3>Hint: {hint}</h3>
             <button className='btnHint' onClick={() => newWord()}>
               New Word
             </button>
           </div>
-        ) : null}
+        )}
         <div className='letterHolder'>
           {Array.from(scramble).map((char, i) => (
             <Letter value={char} key={i}></Letter>

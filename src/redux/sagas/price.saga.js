@@ -20,8 +20,9 @@ function* addPriceImage(action) {
 
 function* updatePriceList(action) {
   try {
-    const results = yield axios.put('/api/pricelist', action.payload);
-    console.log(results);
+    yield axios.put('/api/pricelist', action.payload);
+    yield getPriceList();
+    // yield put({ type: 'ADD_PRICE_LIST', payload: results.data });
     // yield put({ type: 'SET_PRICE_LIST', payload: results.data });
   } catch (error) {
     console.log('Error adding new item to list: ', error);

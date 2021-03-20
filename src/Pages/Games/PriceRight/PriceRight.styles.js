@@ -132,8 +132,8 @@ export const ItemCard = styled.div`
 export const ItemTitle = styled.div`
   text-align: center;
   border-radius: 0px 0px 30px 30px;
-  font-size: 25px;
-  margin-top: -60px;
+  font-size: 22px;
+  margin-top: -56px;
   height: 30px;
   color: white;
   text-shadow: black 0px 0px 40px;
@@ -153,5 +153,5 @@ export const ImageHolder = styled.div`
 
 export const ItemInfo = styled.p`
   display: inline-flex;
-  margin-right: 20px;
+  margin-right: 10px;
 `;

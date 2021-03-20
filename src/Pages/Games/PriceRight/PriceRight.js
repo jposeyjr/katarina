@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ImageHolder,
@@ -14,7 +14,7 @@ const PriceRight = () => {
 
   useEffect(() => {
     dispatch({ type: 'GET_PRICE_LIST' });
-  }, [dispatch]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className='root'>
@@ -24,17 +24,15 @@ const PriceRight = () => {
       {priceList ? (
         <ItemList>
           {priceList.map((item) => (
-            <div className='overlay'>
-              <ItemCard key={item._id}>
-                <ImageHolder>
-                  <img src={item.image} alt={item.name}></img>
-                </ImageHolder>
-                <ItemTitle>
-                  <ItemInfo>{item.name}</ItemInfo>
-                  <ItemInfo>${item.price}</ItemInfo>
-                </ItemTitle>
-              </ItemCard>
-            </div>
+            <ItemCard key={item._id}>
+              <ImageHolder>
+                <img src={item.image} alt={item.name}></img>
+              </ImageHolder>
+              <ItemTitle>
+                <ItemInfo>{item.name}</ItemInfo>
+                <ItemInfo>${item.price}</ItemInfo>
+              </ItemTitle>
+            </ItemCard>
           ))}
         </ItemList>
       ) : (

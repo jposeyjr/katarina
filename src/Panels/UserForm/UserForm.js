@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { EyeIcon, InputHolder, InputReg, Form, Card } from './UserForm.styles';
+import { EyeIcon, InputHolder, InputReg, Card } from './UserForm.styles';
 
 const UserForm = () => {
   const errors = useSelector((redux) => redux.errors);
@@ -36,7 +36,7 @@ const UserForm = () => {
 
   useEffect(() => {
     dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Card>
