@@ -16,6 +16,7 @@ import WordScramble from './Pages/Games/WordScramble/WordScramble';
 import PriceRight from './Pages/Games/PriceRight/PriceRight';
 import PriceRightInput from './Pages/Games/PriceRight/PriceRightInput';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import BabyGuess from './Pages/Games/BabyGuess/BabyGuess';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const App = () => {
         />
         <Route exact path='/games' component={Games} />
         <Route exact path='/wordscramble' component={WordScramble} />
+        <Route exact path='/babyguess' component={BabyGuess} />
         <Route exact path='/pricerightinput' component={PriceRightInput} />
         <Route exact path='/priceisright' component={PriceRight} />
       </Switch>

@@ -46,7 +46,9 @@ const GameLanding = () => {
         </p>
       </div>
       <div className='gameHolder'>
-        <h3>Guess The Baby</h3>
+        <Link className='gameLink' to='/babyguess'>
+          <h3>Guess The Baby</h3>
+        </Link>
         <p>
           Everyone will guess weight, height, hair color, eye color, birth date,
           time and when the day comes we will help you pick the winner.
