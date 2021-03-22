@@ -22,7 +22,7 @@ function* editBabyList(action) {
 function* getBabyList() {
   try {
     const results = yield axios.get('/api/babylist');
-    yield put({ type: 'SET_BabyListES', payload: results.data });
+    yield put({ type: 'SET_BABYLIST', payload: results.data });
   } catch (error) {
     console.log('Error with getting baby list data:', error);
   }

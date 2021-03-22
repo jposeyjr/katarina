@@ -5,6 +5,7 @@ import time from './time.reducer';
 import socketGuest from './socket.reducer';
 import price from './price.reducer';
 import priceImage from './priceImage.reducer';
+import guessReducer from './guessbaby.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   socketGuest,
   price,
   priceImage,
+  guessReducer,
 });
 
 export default rootReducer;

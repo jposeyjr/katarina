@@ -25,7 +25,7 @@ export const BabyGuessInput = styled.input`
   vertical-align: middle;
   font-size: 17px;
   padding: 14px 16px;
-  width: 350px;
+  width: ${(props) => props.size};
   border-radius: 6px;
   font-family: inherit;
 `;

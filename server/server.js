@@ -3,6 +3,7 @@ import passport from './strategies/user.strategy.js';
 import sessionMiddleware from './modules/session-middleware.js';
 import userRouter from './routes/user.router.js';
 import priceRouter from './routes/priceright.router.js';
+import babyGuessRouter from './routes/babyguess.router.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -37,6 +38,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/pricelist', priceRouter);
+app.use('/api/babyguess', babyGuessRouter);
 
 // Serve static files
 app.use(express.static('build'));

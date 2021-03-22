@@ -11,16 +11,24 @@ import 'react-day-picker/lib/style.css';
 import { DateUtils } from 'react-day-picker';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
+import { useDispatch } from 'react-redux';
 
 const BabyGuess = () => {
+  /**
+   * INIT state for guesses baby info,
+   * @todo remove name when fully adding users after the shower
+   */
   const initGuess = {
+    name: '',
     hair: '',
     eyes: '',
-    weight: 0,
+    lbs: 0,
+    oz: 0,
     date: new Date(),
     time: '',
   };
   const [newGuess, setGuess] = useState(initGuess);
+  const dispatch = useDispatch();
 
   /**
    * JS Dates are ugly and weird using date-fns to fix it and display it in a normal way
@@ -71,6 +79,10 @@ const BabyGuess = () => {
      color: white;
  }`;
 
+  const handleSubmit = () => {
+    dispatch({ type: 'SET_USER_GUESS', payload: newGuess });
+  };
+
   return (
     <BabyGuessRoot>
       <h1>Baby Guess</h1>
@@ -78,8 +90,20 @@ const BabyGuess = () => {
         <InputHolder>
           <BabyGuessInput
             type='text'
+            placeholder='Your Name'
+            aria-placeholder='your name'
+            size={'350px'}
+            value={newGuess.name || ''}
+            required
+            onChange={(e) => setGuess({ ...newGuess, name: e.target.value })}
+          />
+        </InputHolder>
+        <InputHolder>
+          <BabyGuessInput
+            type='text'
             placeholder='Hair color'
             aria-placeholder='hair color'
+            size={'350px'}
             value={newGuess.hair || ''}
             required
             onChange={(e) => setGuess({ ...newGuess, hair: e.target.value })}
@@ -90,17 +114,29 @@ const BabyGuess = () => {
             type='text'
             placeholder='Eye color'
             aria-placeholder='eye color'
+            size={'350px'}
             value={newGuess.eye || ''}
             required
             onChange={(e) => setGuess({ ...newGuess, eye: e.target.value })}
           />
         </InputHolder>
         <InputHolder>
+          <label>Weight </label>
           <BabyGuessInput
             type='text'
-            placeholder='Baby Weight'
-            aria-placeholder='baby weight'
-            value={newGuess.weight || ''}
+            placeholder='lbs'
+            aria-placeholder='lbs'
+            size={'145px'}
+            value={newGuess.lbs || ''}
+            required
+            onChange={(e) => setGuess({ ...newGuess, weight: e.target.value })}
+          />{' '}
+          <BabyGuessInput
+            type='text'
+            placeholder='oz'
+            aria-placeholder='oz'
+            size={'145px'}
+            value={newGuess.oz || ''}
             required
             onChange={(e) => setGuess({ ...newGuess, weight: e.target.value })}
           />
@@ -110,6 +146,7 @@ const BabyGuess = () => {
             type='text'
             placeholder='Time Born'
             aria-placeholder='time born'
+            size={'350px'}
             value={newGuess.time || '8:00am'}
             required
             onChange={(e) => setGuess({ ...newGuess, time: e.target.value })}
