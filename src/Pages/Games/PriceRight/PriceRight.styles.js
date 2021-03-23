@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const AboutText = styled.p`
   margin-top: 0;
   text-align: center;
+  width: 40%;
+  align-self: center;
 `;
 
 export const PriceRightRoot = styled.div`
@@ -20,7 +22,7 @@ export const PriceRightInput = styled.input`
   background: #fff;
   border: 1px solid #dddfe2;
   color: #000;
-  height: 40px;
+  height: 46px;
   line-height: 14px;
   vertical-align: middle;
   font-size: 17px;
@@ -28,6 +30,11 @@ export const PriceRightInput = styled.input`
   width: 250px;
   border-radius: 6px;
   font-family: inherit;
+`;
+
+export const GuessInputHolder = styled.div`
+  display: flex;
+  align-self: center;
 `;
 
 export const InputHolder = styled.div`
@@ -93,14 +100,14 @@ export const Button = styled.button`
   font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-  width: 150px;
+  width: ${(props) => props.size};
   font-family: inherit;
 `;
 
 export const ItemList = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 
   @media only screen and (max-width: 500px) {
@@ -109,7 +116,7 @@ export const ItemList = styled.div`
 `;
 
 export const ItemCard = styled.div`
-  margin: 30px auto;
+  margin: 10px;
   width: 250px;
   height: 250px;
   border-radius: 40px;
@@ -154,4 +161,28 @@ export const ImageHolder = styled.div`
 export const ItemInfo = styled.p`
   display: inline-flex;
   margin-right: 10px;
+`;
+
+export const GuessSubmit = styled.button`
+  direction: ltr;
+  margin-left: 10px;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #ff883e;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 40px;
+  width: ${(props) => props.size};
+  font-family: inherit;
 `;

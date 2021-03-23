@@ -20,6 +20,7 @@ passport.deserializeUser((id, done) => {
           username: user.email,
           _id: user._id,
           role: user.role,
+          name: user.name,
         };
         done(null, useInfo);
       } else {

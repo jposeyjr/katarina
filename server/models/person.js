@@ -25,7 +25,7 @@ const PersonSchema = new Schema(
     },
     role: {
       type: String,
-      default: 'host',
+      default: 'guest', //admin, host, guest
     },
     resetPasswordLink: {
       data: String,

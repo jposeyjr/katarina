@@ -1,7 +1,7 @@
 const priceListReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_PRICE_LIST':
-      return action.payload;
+      return Object.assign({}, state, action.payload);
     case 'ADD_PRICE_LIST':
       return [...state, action.payload];
     case 'EDIT_PRICE_LIST':

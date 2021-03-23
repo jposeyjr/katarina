@@ -3,7 +3,11 @@ import mongoose from 'mongoose';
 
 export const getPriceRightList = async (req, res) => {
   try {
-    const data = await PriceRightDB.find({ host_id: req.user._id });
+    // const data = await PriceRightDB.find({ host_id: req.user._id });
+    //hard coded for now until users are fully done
+    const data = await PriceRightDB.find({
+      host_id: '604ccbc6b5a372335c86e91b',
+    });
     res.status(200).json(data[0]);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -26,6 +30,23 @@ export const createList = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+export const addScore = async (req, res) => {
+  const { score } = req.body;
+  try {
+    res.status(201).json();
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({ message: err.message});
+  }
+};
+
+/**
+ *
+ * @param {*} req.body receives name, price and image from front-end of item
+ * deconstructed it for easier usability than assign it to a new object to be pushed into
+ * an array. It uses the host_id to create the relationship to the document.
+ */
 
 export const updateList = async (req, res) => {
   const host_id = req.user._id;

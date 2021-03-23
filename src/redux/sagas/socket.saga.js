@@ -19,7 +19,7 @@ function* getSocketGuest(action) {
 }
 
 function* socketSaga() {
-  yield takeLatest('GET_SOCKET_guest', getSocketGuest);
+  yield takeLatest('GET_SOCKET_GUEST', getSocketGuest);
 }
 
 export default socketSaga;

@@ -87,7 +87,7 @@ const PriceRightPriceRightInput = () => {
                 setItem({ ...newItem, itemPrice: e.target.value })
               }
             />
-            <Button>Submit</Button>
+            <Button size={'150px'}>Submit</Button>
           </Column>
           <Column size={'65%'}>
             <ImageUpload

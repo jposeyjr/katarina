@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 const BabyGuess = () => {
   /**
    * INIT state for guesses baby info,
-   * @todo remove name when fully adding users after the shower
+   * @todo remove name when fully adding users
    */
   const initGuess = {
     name: '',
@@ -24,7 +24,7 @@ const BabyGuess = () => {
     eyes: '',
     lbs: 0,
     oz: 0,
-    date: new Date(),
+    day: new Date(),
     time: '',
   };
   const [newGuess, setGuess] = useState(initGuess);
@@ -80,7 +80,8 @@ const BabyGuess = () => {
  }`;
 
   const handleSubmit = () => {
-    dispatch({ type: 'SET_USER_GUESS', payload: newGuess });
+    if (newGuess.name !== '')
+      dispatch({ type: 'SET_USER_GUESS', payload: newGuess });
   };
 
   return (
@@ -144,10 +145,10 @@ const BabyGuess = () => {
         <InputHolder>
           <BabyGuessInput
             type='text'
-            placeholder='Time Born'
+            placeholder='Time Born i.e 8:00am'
             aria-placeholder='time born'
             size={'350px'}
-            value={newGuess.time || '8:00am'}
+            value={newGuess.time || ''}
             required
             onChange={(e) => setGuess({ ...newGuess, time: e.target.value })}
           />

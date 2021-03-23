@@ -5,6 +5,7 @@ import './GameLanding.css';
 
 const GameLanding = () => {
   const user = useSelector((store) => store.user);
+  const priceList = useSelector((store) => store.price.items);
   return (
     <div className='gameRoot'>
       <div className='gameHolder'>
@@ -24,9 +25,9 @@ const GameLanding = () => {
       <div className='gameHolder'>
         <h3>Don't Say Baby</h3>
         <p>
-          Each guest will have baby attached to them if they say baby the host
-          or someone else will take it. First person to call them out gets the
-          point.
+          The game that seems so simply how could you not win right!? Each guess
+          will try not to say baby while trying to catch others in the act, most
+          points win! Click the link for more details.
         </p>
       </div>
       <div className='gameHolder'>
@@ -35,7 +36,8 @@ const GameLanding = () => {
         </Link>
         <p>
           You will get a baby word that is scrambled, try to spell as many baby
-          words as possible!
+          words as possible! Hints will appear overtime if you start getting
+          stuck!
         </p>
       </div>
       <div className='gameHolder'>

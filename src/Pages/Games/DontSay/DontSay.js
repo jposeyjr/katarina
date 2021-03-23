@@ -7,17 +7,16 @@ const DontSay = () => {
         <h1>Don't Say Baby!</h1>
       </div>
       <p>
-        This is a very simply game, you will have 3 baby pins for the day. If
-        you say the word baby the first person to call you out for it gets your
-        pin! Last person with a pin or pins left wins! In the event of a
-        multiple people with pins left. The winner is whoever has the most pins!
+        This is a very simply game, you will have 3 items we suggest bobby pins
+        for the day. If you say the word baby the first person to call you out
+        for it gets a point. Person with the most points at the end wins!
       </p>
       <div>
         <p>
-          Here is what the pins will look like. Please click on the get pins
-          button below to get your pins if you want to play. If someone says
-          baby simply click on the call out button at the top of the site and
-          enter the persons name.
+          Pick a score keeper at the start and have everyone get bobby pins and
+          clip them to their shirt or somewhere visible. Once called out they
+          remove a pin or similar item. If you lose all your pins you can't call
+          out others!
         </p>
       </div>
     </div>
