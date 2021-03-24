@@ -1,6 +1,5 @@
 import { BabyGuessDB } from '../models/babyguess.js';
 import mongoose from 'mongoose';
-import userEvent from '@testing-library/user-event';
 
 export const getGuessList = async (req, res) => {
   try {
@@ -12,12 +11,14 @@ export const getGuessList = async (req, res) => {
 };
 
 export const createList = async (req, res) => {
-  const { name, hair, eye, weight, time, day } = req.body;
+  const { hair, eyes, lbs, oz, time, day } = req.body;
+  const name = req.user.name;
   const newGuess = new BabyGuessDB({
     name,
     hair,
-    eye,
-    weight,
+    eyes,
+    lbs,
+    oz,
     time,
     day,
   });

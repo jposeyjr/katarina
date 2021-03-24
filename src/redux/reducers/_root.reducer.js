@@ -6,6 +6,7 @@ import socketGuest from './socket.reducer';
 import price from './price.reducer';
 import priceImage from './priceImage.reducer';
 import guessReducer from './guessbaby.reducer';
+import scoreReducer from './score.reduer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   price,
   priceImage,
   guessReducer,
+  scoreReducer,
 });
 
 export default rootReducer;

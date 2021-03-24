@@ -30,17 +30,6 @@ export const createList = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-
-export const addScore = async (req, res) => {
-  const { score } = req.body;
-  try {
-    res.status(201).json();
-  } catch (err) {
-    console.log(err.message);
-    res.status(400).json({ message: err.message});
-  }
-};
-
 /**
  *
  * @param {*} req.body receives name, price and image from front-end of item

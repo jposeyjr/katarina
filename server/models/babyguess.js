@@ -5,7 +5,7 @@ const BabyGuessSchema = new Schema(
   {
     name: { type: String, trim: true, required: true },
     hair: { type: String, required: true },
-    eye: { type: String, required: true },
+    eyes: { type: String, required: true },
     lbs: { type: Number, required: true },
     oz: { type: Number, required: true },
     time: { type: String, required: true },

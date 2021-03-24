@@ -70,6 +70,11 @@ const WordScramble = () => {
     if (time === 0 && !end) {
       setEnd(true);
       alert('Game over thanks for playing!');
+      const scoreData = {
+        score: score,
+        game: 'Word Scramble',
+      };
+      dispatch({ type: 'ADD_SCORE', payload: scoreData });
     } else if (time === 120) {
       getWord();
     }

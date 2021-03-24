@@ -18,14 +18,6 @@ function* addPriceImage(action) {
   }
 }
 
-function* addScore(action) {
-  try {
-    yield axios.post('/api/pricelist/score', action.payload);
-  } catch (error) {
-    console.log('Error with adding baby list data: ', error);
-  }
-}
-
 function* updatePriceList(action) {
   try {
     yield axios.put('/api/pricelist', action.payload);
@@ -55,7 +47,6 @@ function* clearPriceImage() {
 function* PriceListSaga() {
   yield takeLatest('GET_PRICE_LIST', getPriceList);
   yield takeLatest('ADD_ITEM', addPriceItem);
-  yield takeLatest('SET_SCORE', addScore);
   yield takeLatest('UPDATE_LIST', updatePriceList);
   yield takeLatest('ADD_ITEM_IMAGE', addPriceImage);
   yield takeLatest('DELETE_IMAGE', clearPriceImage);

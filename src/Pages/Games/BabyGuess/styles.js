@@ -12,6 +12,9 @@ export const BabyGuessRoot = styled.div`
 export const AboutText = styled.p`
   margin-top: 0;
   text-align: center;
+  width: 40%;
+  align-self: center;
+  font-size: 19px;
 `;
 
 export const BabyGuessInput = styled.input`

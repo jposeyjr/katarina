@@ -46,7 +46,11 @@ const PriceRight = () => {
 
     if (copyArr.length === 1) {
       alert('Great job your score has been submitted!');
-      dispatch({ type: 'SET_SCORE', payload: score });
+      const scoreData = {
+        score: score,
+        game: 'Price Right',
+      };
+      dispatch({ type: 'ADD_SCORE', payload: scoreData });
     }
 
     if (randomItem && itemGuess === randomItem.price) {

@@ -5,6 +5,7 @@ import {
   GuessSubmit,
   Form,
   InputHolder,
+  AboutText,
 } from './styles';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -16,10 +17,8 @@ import { useDispatch } from 'react-redux';
 const BabyGuess = () => {
   /**
    * INIT state for guesses baby info,
-   * @todo remove name when fully adding users
    */
   const initGuess = {
-    name: '',
     hair: '',
     eyes: '',
     lbs: 0,
@@ -79,26 +78,24 @@ const BabyGuess = () => {
      color: white;
  }`;
 
-  const handleSubmit = () => {
-    if (newGuess.name !== '')
-      dispatch({ type: 'SET_USER_GUESS', payload: newGuess });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newGuess.hair && newGuess.eyes && newGuess.lbs && newGuess.oz) {
+      dispatch({ type: 'ADD_GUESS', payload: newGuess });
+      setGuess(initGuess);
+    }
   };
 
   return (
     <BabyGuessRoot>
       <h1>Baby Guess</h1>
-      <Form>
-        <InputHolder>
-          <BabyGuessInput
-            type='text'
-            placeholder='Your Name'
-            aria-placeholder='your name'
-            size={'350px'}
-            value={newGuess.name || ''}
-            required
-            onChange={(e) => setGuess({ ...newGuess, name: e.target.value })}
-          />
-        </InputHolder>
+      <AboutText>
+        In the boxes below make enter your guesses for what you think the baby
+        will look like along with the time and day the baby will be born! The
+        person with the closest day/time AND guesses will win! Tip with our eye
+        and hair combo we can have almost any combo of hair and eye color.
+      </AboutText>
+      <Form onSubmit={handleSubmit}>
         <InputHolder>
           <BabyGuessInput
             type='text'
@@ -116,9 +113,9 @@ const BabyGuess = () => {
             placeholder='Eye color'
             aria-placeholder='eye color'
             size={'350px'}
-            value={newGuess.eye || ''}
+            value={newGuess.eyes || ''}
             required
-            onChange={(e) => setGuess({ ...newGuess, eye: e.target.value })}
+            onChange={(e) => setGuess({ ...newGuess, eyes: e.target.value })}
           />
         </InputHolder>
         <InputHolder>
@@ -130,7 +127,7 @@ const BabyGuess = () => {
             size={'145px'}
             value={newGuess.lbs || ''}
             required
-            onChange={(e) => setGuess({ ...newGuess, weight: e.target.value })}
+            onChange={(e) => setGuess({ ...newGuess, lbs: e.target.value })}
           />{' '}
           <BabyGuessInput
             type='text'
@@ -139,7 +136,7 @@ const BabyGuess = () => {
             size={'145px'}
             value={newGuess.oz || ''}
             required
-            onChange={(e) => setGuess({ ...newGuess, weight: e.target.value })}
+            onChange={(e) => setGuess({ ...newGuess, oz: e.target.value })}
           />
         </InputHolder>
         <InputHolder>

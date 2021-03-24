@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* addGuess(action) {
   try {
-    yield axios.post('/api/guesslist', action.payload);
+    yield axios.post('/api/babyguess', action.payload);
     yield getGuessList();
   } catch (error) {
     console.log('Error with adding guess to the list data: ', error);
@@ -12,7 +12,7 @@ function* addGuess(action) {
 
 function* getGuessList() {
   try {
-    const results = yield axios.get('/api/guesslist');
+    const results = yield axios.get('/api/babyguess');
     yield put({ type: 'SET_GUESS_LIST', payload: results.data });
   } catch (error) {
     console.log('Error with getting guess list data:', error);
