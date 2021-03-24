@@ -26,3 +26,10 @@ export const InputHolder = styled.div`
   font-size: 17px;
   font-family: inherit;
 `;
+
+export const AboutText = styled.p`
+  margin-top: 0;
+  text-align: center;
+  align-self: center;
+  font-size: 20px;
+`;

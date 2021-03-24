@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.get('/', rejectUnauthenticated, getPriceRightList);
+router.get('/', getPriceRightList);
 router.post('/', rejectUnauthenticated, createList);
 router.put('/', rejectUnauthenticated, updateList);
 router.delete('/:id', rejectUnauthenticated, deleteList);

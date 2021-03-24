@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Timer from '../Utilz/Timer';
 import Letter from './Letter';
-import { InputGuess, InputHolder } from './style';
+import { AboutText, InputGuess, InputHolder } from './style';
 import { toast } from 'react-toastify';
 import './WordScamble.css';
+import { useHistory } from 'react-router';
 
 const WordScramble = () => {
   const [words, setWord] = useState([
@@ -56,21 +57,26 @@ const WordScramble = () => {
   const [scramble, setScramble] = useState('');
   const [key, setKey] = useState('');
   const [end, setEnd] = useState(false);
+  const [start, setStart] = useState(false);
   const [newHint, setNewHint] = useState(0);
   const [hint, setHint] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
   const timer = useSelector((store) => store.time);
   const [time, setTime] = useState(null);
+  const options = {
+    onClose: () => history.push('/games'),
+  };
 
   useEffect(() => {
-    if (time === null) {
+    if (time === null && start) {
       dispatch({ type: 'SET_TIMER', payload: 120 });
       setTime(timer.time);
     }
     time > 0 && setTimeout(() => setTime(time - 1), 1000);
     if (time === 0 && !end) {
       setEnd(true);
-      toast.error('🎮 Game over, I hope you had fun!');
+      toast.error('🎮 Game over, I hope you had fun!', options);
       const scoreData = {
         score: score,
         game: 'Word Scramble',
@@ -80,7 +86,7 @@ const WordScramble = () => {
       getWord();
     }
     giveHint();
-  }, [score, end, time, timer]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [score, end, time, timer, start]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getWord = () => {
     const randNum = Math.floor(Math.random() * words.length);
@@ -142,39 +148,55 @@ const WordScramble = () => {
     <div className='root'>
       <div className='rootHolder'>
         <h1>Word Scramble</h1>
-        <div className='timeHolder'>
-          <Timer time={time} />
-          <h3>Score: {score}</h3>
-        </div>
-        {hint && (
-          <div className='hintHolder'>
-            <h3>Hint: {hint}</h3>
-            <button className='btnHint' onClick={() => newWord()}>
-              New Word
+        {start ? (
+          <>
+            <div className='timeHolder'>
+              <Timer time={time} />
+              <h3>Score: {score}</h3>
+            </div>
+            {hint && (
+              <div className='hintHolder'>
+                <h3>Hint: {hint}</h3>
+                <button className='btnHint' onClick={() => newWord()}>
+                  New Word
+                </button>
+              </div>
+            )}
+            <div className='letterHolder'>
+              {Array.from(scramble).map((char, i) => (
+                <Letter value={char} key={i}></Letter>
+              ))}
+            </div>
+            <form onSubmit={handleSubmit} id='myForm' className='formArea'>
+              <InputHolder>
+                <InputGuess
+                  type='text'
+                  name='guess'
+                  autoFocus
+                  placeholder='Input Guess'
+                  aria-label='guess'
+                />
+              </InputHolder>
+              <div className='bottomArea'>
+                <button className='btnGuess' type='submit' disabled={end}>
+                  Submit
+                </button>
+              </div>
+            </form>
+          </>
+        ) : (
+          <>
+            <AboutText>
+              Once you click on start game you will have two minutes to try to
+              guess random baby related words that are scrambled up! After a
+              short time if your stuck you will start to get hints and the
+              ability to get a new word.
+            </AboutText>
+            <button className='btnGuess' onClick={() => setStart(true)}>
+              Start Game!
             </button>
-          </div>
+          </>
         )}
-        <div className='letterHolder'>
-          {Array.from(scramble).map((char, i) => (
-            <Letter value={char} key={i}></Letter>
-          ))}
-        </div>
-        <form onSubmit={handleSubmit} id='myForm' className='formArea'>
-          <InputHolder>
-            <InputGuess
-              type='text'
-              name='guess'
-              autoFocus
-              placeholder='Input Guess'
-              aria-label='guess'
-            />
-          </InputHolder>
-          <div className='bottomArea'>
-            <button className='btnGuess' type='submit' disabled={end}>
-              Submit
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   );

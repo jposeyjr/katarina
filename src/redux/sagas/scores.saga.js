@@ -12,7 +12,7 @@ function* getScores() {
 
 function* addScore(action) {
   try {
-    yield axios.post('/api/score', action.payload);
+    yield axios.post('/api/scores', action.payload);
   } catch (error) {
     console.log('Error with adding the score to db: ', error);
   }
@@ -20,7 +20,7 @@ function* addScore(action) {
 
 function* updateScore(action) {
   try {
-    yield axios.put('/api/score', action.payload);
+    yield axios.put('/api/scores', action.payload);
     yield getScores();
   } catch (error) {
     console.log('Error adding new score to db: ', error);

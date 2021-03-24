@@ -5,12 +5,10 @@ import { Strategy } from 'passport-local';
 import { PersonDB } from '../models/person.js';
 
 passport.serializeUser((user, done) => {
-  console.log('called');
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log('called');
   PersonDB.findOne({ _id: id })
     .then((result) => {
       const user = result;

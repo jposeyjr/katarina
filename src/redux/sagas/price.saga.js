@@ -32,7 +32,7 @@ function* getPriceList() {
     const results = yield axios.get('/api/pricelist');
     yield put({ type: 'SET_PRICE_LIST', payload: results.data });
   } catch (error) {
-    console.log('Error with getting baby list data:', error);
+    console.log('Error with getting baby list data:', error.message);
   }
 }
 

@@ -9,7 +9,6 @@ import axios from 'axios';
 function* loginUser(action) {
   try {
     // clear any existing error on the login page
-    console.log('this is called?, put');
     yield put({ type: 'CLEAR_LOGIN_ERROR' });
     const config = {
       headers: { 'Content-Type': 'application/json' },

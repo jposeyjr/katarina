@@ -13,8 +13,14 @@
   text-align: center;
 }
 
+.gameHolder h3 {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+}
+
 .gameHolder p {
-  margin: 5px;
+  margin: 5px 10px 20px 10px;
 }
 
 .gameRoot {

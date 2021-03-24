@@ -23,11 +23,12 @@ const GameLanding = () => {
         )}
       </div>
       <div className='gameHolder'>
-        <h3>Don't Say Baby</h3>
+        <Link className='gameLink' to='/babyguess'>
+          <h3>Guess The Baby</h3>
+        </Link>
         <p>
-          The game that seems so simply how could you not win right!? Each guess
-          will try not to say baby while trying to catch others in the act, most
-          points win! Click the link for more details.
+          Everyone will guess weight, height, hair color, eye color, birth date,
+          time and when the day comes we will help you pick the winner.
         </p>
       </div>
       <div className='gameHolder'>
@@ -41,19 +42,18 @@ const GameLanding = () => {
         </p>
       </div>
       <div className='gameHolder'>
+        <h3>Don't Say Baby</h3>
+        <p>
+          The game that seems so simply how could you not win right!? Each guess
+          will try not to say baby while trying to catch others in the act, most
+          points win!
+        </p>
+      </div>
+      <div className='gameHolder'>
         <h3>Which Parent Game</h3>
         <p>
           Create customs questions or use are pre-loaded questions to guess what
           parent fits the question best!
-        </p>
-      </div>
-      <div className='gameHolder'>
-        <Link className='gameLink' to='/babyguess'>
-          <h3>Guess The Baby</h3>
-        </Link>
-        <p>
-          Everyone will guess weight, height, hair color, eye color, birth date,
-          time and when the day comes we will help you pick the winner.
         </p>
       </div>
       <div className='gameHolder'>

@@ -13,60 +13,70 @@ import {
   AboutText,
 } from './PriceRight.styles';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router';
 
 const PriceRight = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const priceList = useSelector((store) => store.price.items);
   const [randomItem, setRandom] = useState(null);
-  const [copyArr, setCopy] = useState([]);
+  const [copyArr, setCopy] = useState(null);
   const [itemGuess, setItemGuess] = useState('');
   const [score, setScore] = useState(0);
+  const [counter, setCount] = useState(null);
+
+  const options = {
+    onClose: () => history.push('/games'),
+  };
 
   const getRandomItem = () => {
-    const randItem = copyArr[Math.floor(Math.random() * copyArr.length)];
-    setRandom(randItem);
-    let newArr = copyArr.filter((item) => item._id !== randItem._id);
-    setCopy(newArr);
-    console.log(copyArr);
+    if (copyArr && counter !== 0) {
+      const randItem = copyArr[Math.floor(Math.random() * copyArr.length)];
+      setRandom(randItem);
+      setCount(copyArr.length);
+      let newArr = copyArr.filter((item) => item._id !== randItem._id);
+      setCopy(newArr);
+    }
   };
 
   useEffect(() => {
     if (!priceList) {
-      console.log('wtf');
       dispatch({ type: 'GET_PRICE_LIST' });
     }
-    if (priceList?.length && copyArr.length < 1) {
-      console.log('called');
+    if (priceList?.length && copyArr === null) {
       setCopy(priceList);
     }
     if (!randomItem) {
       getRandomItem();
     }
-  }, [priceList, score]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [priceList, score, copyArr]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (copyArr.length === 1) {
-      toast.error('🎮 Game over, I hope you had fun!');
+    if (counter === 1) {
+      toast.error('🎮 Game over, I hope you had fun!', options);
       const scoreData = {
         score: score,
         game: 'Price Right',
       };
       dispatch({ type: 'ADD_SCORE', payload: scoreData });
+      setCount(10);
     }
 
     if (randomItem && itemGuess === randomItem.price) {
       setScore(score + 2);
       getRandomItem();
       setItemGuess('');
+      setCount(counter - 1);
     } else if (randomItem && itemGuess == randomItem.price - 1) {
       setScore(score + 0.5);
       getRandomItem();
       setItemGuess('');
+      setCount(counter - 1);
     } else {
       getRandomItem();
       setItemGuess('');
+      setCount(counter - 1);
     }
   };
 
