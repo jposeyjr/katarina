@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Timer from '../Utilz/Timer';
 import Letter from './Letter';
 import { InputGuess, InputHolder } from './style';
+import { toast } from 'react-toastify';
 import './WordScamble.css';
 
 const WordScramble = () => {
@@ -69,7 +70,7 @@ const WordScramble = () => {
     time > 0 && setTimeout(() => setTime(time - 1), 1000);
     if (time === 0 && !end) {
       setEnd(true);
-      alert('Game over thanks for playing!');
+      toast.error('🎮 Game over, I hope you had fun!');
       const scoreData = {
         score: score,
         game: 'Word Scramble',

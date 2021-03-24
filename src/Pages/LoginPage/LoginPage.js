@@ -14,8 +14,8 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const errors = useSelector((redux) => redux.errors);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
     const { username, password } = user;
     if (username && password) {
       dispatch({

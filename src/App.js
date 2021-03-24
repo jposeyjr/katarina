@@ -17,6 +17,8 @@ import PriceRight from './Pages/Games/PriceRight/PriceRight';
 import PriceRightInput from './Pages/Games/PriceRight/PriceRightInput';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import BabyGuess from './Pages/Games/BabyGuess/BabyGuess';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,17 @@ const App = () => {
   return (
     <Router>
       <Nav />
+      <ToastContainer
+        position='top-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Switch>
         <Redirect exact from='/' to='/home' />
         <ProtectedRoute

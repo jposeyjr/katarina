@@ -6,8 +6,12 @@ import { PersonDB } from '../models/person.js';
 
 const router = express.Router();
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-  res.send(req.user);
+router.get('/', (req, res) => {
+  try {
+    res.send(req.user);
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 router.post('/register', (req, res, next) => {
@@ -33,7 +37,11 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/login', userStrategy.authenticate('local'), (req, res) => {
-  res.sendStatus(200);
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 router.post('/logout', (req, res) => {

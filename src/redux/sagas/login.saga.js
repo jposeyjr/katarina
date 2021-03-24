@@ -9,15 +9,17 @@ import axios from 'axios';
 function* loginUser(action) {
   try {
     // clear any existing error on the login page
+    console.log('this is called?, put');
     yield put({ type: 'CLEAR_LOGIN_ERROR' });
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
     yield axios.post('/api/user/login', action.payload, config);
+    console.log('this is called?');
     yield put({ type: 'FETCH_USER' });
   } catch (error) {
-    console.log('Error with user login:', error);
+    console.log('Error with user login:', error.message);
     if (error.response.status === 401) {
       yield put({ type: 'LOGIN_FAILED' });
     } else {

@@ -13,6 +13,7 @@ import { DateUtils } from 'react-day-picker';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const BabyGuess = () => {
   /**
@@ -83,6 +84,7 @@ const BabyGuess = () => {
     if (newGuess.hair && newGuess.eyes && newGuess.lbs && newGuess.oz) {
       dispatch({ type: 'ADD_GUESS', payload: newGuess });
       setGuess(initGuess);
+      toast.success('🦄 Guess submitted successfully!');
     }
   };
 
