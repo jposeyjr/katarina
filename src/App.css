@@ -30,6 +30,13 @@ body {
   flex-direction: column;
   text-align: center;
 }
+@media only screen and (max-width: 900px) {
+  .root {
+    min-width: unset;
+    margin: 0;
+    margin-top: 70px;
+  }
+}
 /* FORM CSS */
 
 .formHolder {
@@ -195,6 +202,13 @@ a:visited {
   gap: 0px 1em;
   grid-template-areas: 'rootHome userForm';
 }
+
+@media only screen and (max-width: 900px) {
+  .gridContainer {
+    grid-template-areas: 'rootHome' 'userForm';
+  }
+}
+
 .rootHome {
   grid-area: rootHome;
   font-size: 1.2rem;

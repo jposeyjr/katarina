@@ -7,6 +7,11 @@ export const BabyGuessRoot = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  @media only screen and (max-width: 900px) {
+    min-width: unset;
+    margin: 0;
+    margin-top: 70px;
+  }
 `;
 
 export const AboutText = styled.p`
@@ -15,6 +20,10 @@ export const AboutText = styled.p`
   width: 40%;
   align-self: center;
   font-size: 19px;
+  @media only screen and (max-width: 900px) {
+    width: 80%;
+    font-size: 19px;
+  }
 `;
 
 export const BabyGuessInput = styled.input`
@@ -74,4 +83,8 @@ export const GuessSubmit = styled.button`
   padding: 0 10px;
   width: 100px;
   font-family: inherit;
+
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;

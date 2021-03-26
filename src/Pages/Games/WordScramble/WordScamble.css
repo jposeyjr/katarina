@@ -80,6 +80,12 @@
   margin: 40px 0 0;
 }
 
+@media only screen and (max-width: 900px) {
+  .rootHolder {
+    width: 100%;
+  }
+}
+
 .timeHolder {
   display: flex;
   justify-content: space-around;

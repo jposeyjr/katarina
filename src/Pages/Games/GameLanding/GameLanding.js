@@ -49,7 +49,7 @@ const GameLanding = () => {
           points win!
         </p>
       </div>
-      <div className='gameHolder'>
+      {/* <div className='gameHolder'>
         <h3>Which Parent Game</h3>
         <p>
           Create customs questions or use are pre-loaded questions to guess what
@@ -62,7 +62,7 @@ const GameLanding = () => {
           Based on the statements guess if it is mommy or daddy who said it!
           Most correct answers wins!
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

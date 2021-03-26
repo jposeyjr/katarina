@@ -9,10 +9,14 @@ const Nav = () => {
         <li>
           <Link to='/'>Home</Link>
         </li>
-        <li>
-          <Link to='/games'>Games</Link>
-        </li>
-        {user._id && <li>Logged In</li>}
+        {user._id && (
+          <>
+            <li>
+              <Link to='/games'>Games</Link>
+            </li>
+            <li>Logged In</li>
+          </>
+        )}
       </ul>
     </nav>
   );

@@ -5,6 +5,10 @@ export const AboutText = styled.p`
   text-align: center;
   width: 40%;
   align-self: center;
+  @media only screen and (max-width: 900px) {
+    width: 70%;
+    font-size: 18px;
+  }
 `;
 
 export const PriceRightRoot = styled.div`
@@ -14,6 +18,11 @@ export const PriceRightRoot = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  @media only screen and (max-width: 900px) {
+    min-width: unset;
+    margin: 0;
+    margin-top: 70px;
+  }
 `;
 
 export const PriceRightInput = styled.input`
