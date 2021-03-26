@@ -81,7 +81,7 @@ export const GuessSubmit = styled.button`
   font-size: 20px;
   line-height: 48px;
   padding: 0 10px;
-  width: 100px;
+  width: 340px;
   font-family: inherit;
 
   @media only screen and (max-width: 900px) {
