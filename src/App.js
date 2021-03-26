@@ -61,8 +61,8 @@ const App = () => {
           path='/home'
           user={user}
           component={HomePage}
-          authRedirect='/landing'
-          hostRedirect='/landing'
+          authRedirect='/games'
+          hostRedirect='/games'
         />
         <Route exact path='/games' component={Games} />
         <Route exact path='/wordscramble' component={WordScramble} />

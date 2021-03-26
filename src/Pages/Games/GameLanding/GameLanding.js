@@ -44,9 +44,10 @@ const GameLanding = () => {
       <div className='gameHolder'>
         <h3>Don't Say Baby</h3>
         <p>
-          The game that seems so simply how could you not win right!? Each guess
+          The game that seems so simply how could you not win right!? Each guest
           will try not to say baby while trying to catch others in the act, most
-          points win!
+          points win! Bobby pins are suggested for an easy visual on who has
+          points left!
         </p>
       </div>
       {/* <div className='gameHolder'>
