@@ -7,6 +7,7 @@ import babyGuessRouter from './routes/babyguess.router.js';
 import scoreRouter from './routes/score.router.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 
 mongoose.connect(
@@ -43,7 +44,11 @@ app.use('/api/babyguess', babyGuessRouter);
 app.use('/api/scores', scoreRouter);
 
 // Serve static files
-app.use(express.static('build'));
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // App Set //
 const PORT = process.env.PORT || 5000;
