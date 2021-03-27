@@ -14,6 +14,9 @@ const Nav = () => {
             <li>
               <Link to='/games'>Games</Link>
             </li>
+            <li>
+              <Link to='firstyear'>Video</Link>
+            </li>
             <li>Logged In</li>
           </>
         )}

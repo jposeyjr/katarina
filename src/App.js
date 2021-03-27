@@ -19,6 +19,7 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import BabyGuess from './Pages/Games/BabyGuess/BabyGuess';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import VideoPage from './Pages/VideoPage/VideoPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,12 @@ const App = () => {
           path='/landing'
           user={user}
           component={LandingPage}
+        />
+        <ProtectedRoute
+          exact
+          path='/firstyear'
+          user={user}
+          component={VideoPage}
         />
         <ProtectedRoute
           exact

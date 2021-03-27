@@ -37,6 +37,27 @@ body {
     margin-top: 70px;
   }
 }
+
+/* FOR TEMP VIDEO PLAYER REMOVE LATER @TODO */
+.video-holder {
+  position: relative;
+  padding-top: 56.25%;
+  margin-top: 10%;
+}
+
+.video-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 70px;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* FORM CSS */
 
 .formHolder {
@@ -146,15 +167,13 @@ body {
   display: inline-block;
   line-height: 69px;
   height: 69px;
-  padding: 0 25px;
+  padding: 0 15px;
 }
 
 .navBar li a {
   text-decoration: none;
   text-align: center;
   position: relative;
-  margin: 0px 10px;
-  padding: 10px 10px;
   z-index: 0;
 }
 
