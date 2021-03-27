@@ -8,6 +8,11 @@ import scoreRouter from './routes/score.router.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
+//need for ES modules to hopefully fix the url issue on heroku
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 dotenv.config();
 
 mongoose.connect(
